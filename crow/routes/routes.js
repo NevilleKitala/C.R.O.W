@@ -81,9 +81,24 @@ module.exports = function(app, passport) {
   HOME PAGE ================================================================
   ==========================================================================
   */
-  app.get('/home', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+  app.get('/home', isLoggedIn, function(req, res, next) {
+    console.log(req.user.local.email)
+    if(req.user.local.email.toString() == "socialmediaapp@gmail.com") {
+      res.render('Admin/index', { title: 'crow' });
+    }
+    else {
+      res.render('User/index', { title: 'crow' });
+    }
   });
+};
 
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
 
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
 };
