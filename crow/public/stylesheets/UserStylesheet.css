@@ -19,8 +19,20 @@ a {
     height: 95%;
     width: 90%;
     margin: 3.5% auto;
-    border-radius: 5px;
     max-width: 100%;
-    background-color: #122025;
+    border: #122025 20px solid;
     box-shadow: whitesmoke 0px 0px 15px 5px;
+}
+
+.welcomeHeader {
+  font-size: 3em;
+  margin:275px auto 150px;
+}
+
+.btn.primary{
+  border: 5px solid #122025;
+  border-radius: 500px;
+  width: 300px;
+  font-size: 0.6em;
+  font-weight:bold;
 }

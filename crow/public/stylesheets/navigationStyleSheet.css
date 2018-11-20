@@ -1,0 +1,46 @@
+html{
+  height: 100%;
+}
+
+body {
+  padding: 50px;
+  font-size: 2em;
+  font-family: 'Abel';
+  text-align: center;
+  color: #212529;
+  height: 90%;
+}
+
+ul{
+  text-decoration: none;
+  display: inline;
+  list-style: none;
+  font-size: 0.5em;
+}
+
+li{
+  display: inline;
+  margin-right: 20px;
+}
+
+nav{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}
+
+.search{
+  width: 50%;
+  border-radius: 100px;
+  border: solid 5px lightgray;
+  margin-right: 20px;
+  padding-right: 25px;
+  text-align: right;
+}

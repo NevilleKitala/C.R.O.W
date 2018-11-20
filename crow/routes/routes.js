@@ -108,7 +108,7 @@ module.exports = function(app, passport) {
     res.render('Admin/index', { title: 'crow', supplier : Suppliers});
   })
 
-  app.post('/home', isLoggedIn, upload.single("file"), function(req, res, next) {
+  app.post('/admin', isLoggedIn, upload.single("file"), function(req, res, next) {
 
 
     if(req.body.form_name == 'catalouge'){
