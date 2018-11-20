@@ -10,6 +10,7 @@
     "bcrypt-nodejs": "latest",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.4.3",
+    "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "ejs": "~2.5.2",
     "ejs-compile": "0.0.1",

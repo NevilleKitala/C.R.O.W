@@ -3,19 +3,15 @@ var mongoose = require('mongoose');
 
 // define the schema for our user model
 var catalougeSchema = mongoose.Schema({
-
-    catalouge : {
-        name      : String,
-        brand     : String,
-        gender    : String,
-        colour    : String,
-        size      : String,
-        productType: String,
-        exclusive : boolean,
-        image     : String,
-        },
-    }
-
+  catalouge : {
+    name      : String,
+    brand     : String,
+    gender    : String,
+    colour    : String,
+    size      : String,
+    productType: String,
+    image     : String,
+  },
 });
 
 // methods ======================

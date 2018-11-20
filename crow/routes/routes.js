@@ -1,6 +1,26 @@
 var express = require('express');
 var ejs = require("ejs");
 var fs = require("fs");
+var crypto = require('crypto');
+
+var path = require('path');
+var multer = require('multer');
+
+var storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      if (err) return cb(err)
+
+      cb(null, file.originalname)
+    })
+  }
+});
+
+var upload = multer({ storage: storage });
+
+var Catalouge = require('../models/catalouge');
+var Suppliers = require('../models/suppliers');
 
 module.exports = function(app, passport) {
   /*
@@ -9,7 +29,7 @@ module.exports = function(app, passport) {
   ==========================================================================
   */
   app.get('/', function(req, res) {
-      res.redirect('/register'); // load the index.ejs file
+      res.redirect('/home'); // load the index.ejs file
   });
 
   // =====================================
@@ -17,7 +37,6 @@ module.exports = function(app, passport) {
   // =====================================
   // show the signup form
   app.get('/register', function(req, res) {
-
       // render the page and pass in any flash data if it exists
       res.render('registration.ejs', { message: req.flash('signupMessage') });
   });
@@ -81,16 +100,59 @@ module.exports = function(app, passport) {
   HOME PAGE ================================================================
   ==========================================================================
   */
-  app.get('/home', isLoggedIn, function(req, res, next) {
-    console.log(req.user.local.email)
-    if(req.user.local.email.toString() == "socialmediaapp@gmail.com") {
-      res.render('Admin/index', { title: 'crow' });
+  app.get('/home', function(req, res, next) {
+    res.render('User/index', { title: 'crow' });
+  });
+
+  app.get('/admin', isLoggedIn, function(req, res, next) {
+    res.render('Admin/index', { title: 'crow', supplier : Suppliers});
+  })
+
+  app.post('/home', isLoggedIn, upload.single("file"), function(req, res, next) {
+
+
+    if(req.body.form_name == 'catalouge'){
+      var item = new Catalouge();
+      console.log(req.file)
+      const tempPath = req.file.path;
+
+        fs.rename(tempPath, req.file.destination, err => {
+
+        });
+
+      console.log(req.file.path);
+
+      item.catalouge.name = req.body.item_name;
+      item.catalouge.brand = req.body.brand_name;
+      item.catalouge.gender = req.body.gender;
+      item.catalouge.colour = req.body.colour;
+      item.catalouge.size = req.body.size;
+      item.catalouge.productType = req.body.product_type;
+      item.catalouge.image = req.file.path;
+
+      // save our user to the database
+      item.save(function(err) {
+          if (err)
+              throw err;
+      });
     }
     else {
-      res.render('User/index', { title: 'crow' });
+      var supplier = new Suppliers();
+
+      supplier.company.name = req.body.company_name;
+      supplier.company.brand = req.body.brand_name;
+
+      // save our user to the database
+      supplier.save(function(err) {
+          if (err)
+              throw err;
+      });
     }
+      res.redirect('/home');
   });
+
 };
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

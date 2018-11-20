@@ -8,7 +8,6 @@ var passport = require('passport');
 var nodeMailer = require("nodemailer");
 var flash    = require('connect-flash');
 var helmet    = require('helmet');
-var multer = require('multer');
 
 var session  = require('express-session');
 

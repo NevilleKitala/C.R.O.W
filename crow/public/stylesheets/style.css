@@ -1,8 +1,26 @@
+html{
+  height: 100%;
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 2em;
+  font-family: 'Abel';
+  text-align: center;
+  color: #212529;
+  height: 90%;
 }
 
 a {
   color: #00B7FF;
+}
+
+.welcome {
+    height: 95%;
+    width: 90%;
+    margin: 3.5% auto;
+    border-radius: 5px;
+    max-width: 100%;
+    background-color: #122025;
+    box-shadow: whitesmoke 0px 0px 15px 5px;
 }

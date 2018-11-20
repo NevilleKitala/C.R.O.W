@@ -1,9 +1,9 @@
-<form name="suppliers" method="post">
+<form action = '/home' method="post" enctype="multipart/form-data">
   <div class = "user-input">
-
+    <input type="hidden" name = "form_name" value = "catalouge">
     <div class = "user-field">
       <label class="sr-only" >item name :</label>
-      <input class="form-control" placeholder="item name" type="text" name = "company_name">
+      <input class="form-control" placeholder="item name" type="text" name = "item_name">
     </div>
 
     <div class = "user-field">
@@ -65,7 +65,7 @@
 
     <div class = "user-field">
       <label class="sr-only" >image :</label>
-      <input class="form-control" placeholder="image location"  type="file" name = "image">
+      <input class="form-control" placeholder="image location"  type="file" name = "file">
     </div>
 
   </div>

@@ -7,7 +7,7 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var request = require('request-promise');
 
 // load up the user model
-var User            = require('../models/user');
+var User = require('../models/user');
 
 // load the auth variables
 var configAuth = require('./auth');
