@@ -3,7 +3,7 @@ html{
 }
 
 body {
-  padding: 50px;
+  padding: 15px;
   font-size: 2em;
   font-family: 'Abel';
   text-align: center;
@@ -12,21 +12,28 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #212529;
+  transition: all 0.5s ease;
+}
+
+a:hover {
+  color: #CED4DA;
+  text-decoration: none;
+  transition: all 0.5s ease;
 }
 
 .welcome {
     height: 95%;
     width: 90%;
-    margin: 3.5% auto;
+    margin: auto;
     max-width: 100%;
     border: #122025 20px solid;
     box-shadow: whitesmoke 0px 0px 15px 5px;
 }
 
 .welcomeHeader {
-  font-size: 3em;
-  margin:275px auto 150px;
+  font-size: 5em;
+  margin:200px auto 75px;
 }
 
 .btn.primary{
@@ -35,4 +42,15 @@ a {
   width: 300px;
   font-size: 0.6em;
   font-weight:bold;
+}
+
+.dropdown-menu{
+  border: none;
+  width: 100%;
+  position: relative;
+}
+
+.dropdown-item{
+  width: fit-content;
+  display:inline;
 }

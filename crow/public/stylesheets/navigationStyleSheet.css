@@ -1,26 +1,14 @@
-html{
-  height: 100%;
-}
-
-body {
-  padding: 50px;
-  font-size: 2em;
-  font-family: 'Abel';
-  text-align: center;
-  color: #212529;
-  height: 90%;
-}
-
 ul{
   text-decoration: none;
   display: inline;
   list-style: none;
   font-size: 0.5em;
+  width: 100%;
 }
 
 li{
   display: inline;
-  margin-right: 20px;
+  margin: auto;
 }
 
 nav{
@@ -37,10 +25,24 @@ nav{
 }
 
 .search{
+  all: revert;
   width: 50%;
+  height: 50px;
   border-radius: 100px;
   border: solid 5px lightgray;
-  margin-right: 20px;
+  margin: auto;
   padding-right: 25px;
   text-align: right;
+}
+
+.nav-tabs{
+  border: none;
+}
+
+.tab-pane a{
+  margin: 0 25px;
+}
+
+a.attention{
+  color: #D95242;
 }

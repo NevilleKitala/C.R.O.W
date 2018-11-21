@@ -1,16 +1,45 @@
 <link rel="stylesheet" href="stylesheets\navigationStylesheet.css" />
 <nav>
   <form action = '/admin' method="post" enctype="multipart/form-data">
-    <ul>
-      <li><a> Women </a></li>
-      <li><a> Men </a></li>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <img src="images/Crow_Logo.png" height = "75px"/>
+      <li><a class="nav-item active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Women</a></li>
+      <li><a class = "nav-item" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Men</a></li>
 
       <input type="text" name="" class = "search" placeholder = "Search for brand and clothing!" value="">
 
-      <li><a class="far fa-heart"></a></li>
+      <li><a class="far fa-heart attention" href = ""></a></li>
       <li><a class="far fa-user-circle"></a></li>
       <li></li>
       <li><a> Basket </a></li>
     </ul>
   </form>
 </nav>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <nav>
+      <ul>
+        <li><a>Just Released</a></li>
+        <li><a>Tops and shirts</a></li>
+        <li><a>Shoes</a></li>
+        <li><a>Accesories</a></li>
+        <li><a>Jewelery</a></li>
+        <li><a>Perfumes</a></li>
+        <li><a>Make up</a></li>
+        <li><a class = "attention" href = "">Outlet</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <nav>
+      <ul>
+        <li><a>Just Released</a></li>
+        <li><a>clothes</a></li>
+        <li><a>Shoes</a></li>
+        <li><a>Accesories</a></li>
+        <li><a>colognes</a></li>
+        <li><a class = "attention" href = "">Outlet</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
