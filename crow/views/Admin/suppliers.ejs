@@ -1,13 +1,37 @@
-<form name="suppliers" action = '/admin' method="post">
-  <div class = "user-input">
-    <input type="hidden" name = "form_name" value = "suppliers">
-    <div class = "user-field">
-      <label class="sr-only" >company name :</label>
-      <input class="form-control" placeholder="Company name" type="text" name = "company_name">
-    </div>
-    <div class = "user-field">
-      <label class="sr-only" >company brand name</label>
-      <input class="form-control" placeholder="Company brand name"  type="text" name = "brand_name">
-    </div>
-    <button class="btn btn-lg btn-primary btn-block submit-login" type="submit">Add Supplier</button>
-</form>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col"> # </th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Company Brand</th>
+      <th scope="col"> - </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for(var i = 0; i < supplier.length; i++ ) { %>
+    <tr>
+      <th scope="row"><%= i %></th>
+      <td><%= supplier[i].company.name %></td>
+      <td><%= supplier[i].company.brand %></td>
+      <td><%= supplier[i].company.brand %></td>
+    </tr>
+  <% } %>
+  <tr>
+    <th>  </th>
+    <form name="suppliers" action = '/admin' method="post">
+      <div class = "user-input">
+        <input type="hidden" name = "form_name" value = "suppliers">
+        <td>
+          <input class="form-control" placeholder="Company name" type="text" name = "company_name">
+        </td>
+        <td>
+          <input class="form-control" placeholder="Company brand name"  type="text" name = "brand_name">
+        </td>
+        </div>
+        <td>
+          <button class="btn btn-lg btn-primary btn-block submit-login" type="submit">Add Supplier</button>
+        </td>
+      </form>
+    </tr>
+  </tbody>
+</table>

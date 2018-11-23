@@ -6,6 +6,10 @@ var crypto = require('crypto');
 var path = require('path');
 var multer = require('multer');
 
+var configDB = require('../config/database.js');
+var MongoClient = require('mongodb').MongoClient;
+var url = configDB.url;
+
 var storage = multer.diskStorage({
   destination: './uploads/',
   filename: function (req, file, cb) {
@@ -42,13 +46,13 @@ module.exports = function(app, passport) {
   });
 
   app.post('/signup', passport.authenticate('local-signup', {
-      successRedirect : '/home',
+      successRedirect : '/admin',
       failureRedirect : '/register',
       failureFlash : true
   }));
 
   app.post('/login', passport.authenticate('local-login', {
-      successRedirect : '/home',
+      successRedirect : '/admin',
       failureRedirect : '/register',
       failureFlash : true
   }));
@@ -105,7 +109,23 @@ module.exports = function(app, passport) {
   });
 
   app.get('/admin', isLoggedIn, function(req, res, next) {
-    res.render('Admin/index', { title: 'crow', supplier : Suppliers});
+
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("filler");
+      dbo.collection("companies").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        dbo.collection("catalouges").find({}).toArray(function(err, results) {
+          if (err) throw err;
+          res.render('Admin/index', { title: 'crow', supplier : result, catalouge: results});
+          db.close();
+        });
+        db.close();
+      });
+    });
+
+
+
   })
 
   app.post('/admin', isLoggedIn, upload.single("file"), function(req, res, next) {
