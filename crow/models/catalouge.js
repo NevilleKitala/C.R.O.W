@@ -11,6 +11,7 @@ var catalougeSchema = mongoose.Schema({
     size      : String,
     productType: String,
     image     : String,
+    price     : Number
   },
 });
 

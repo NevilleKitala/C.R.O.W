@@ -11,7 +11,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = configDB.url;
 
 var storage = multer.diskStorage({
-  destination: './uploads/',
+  destination: 'public/uploads/',
   filename: function (req, file, cb) {
     crypto.pseudoRandomBytes(16, function (err, raw) {
       if (err) return cb(err)
@@ -105,7 +105,20 @@ module.exports = function(app, passport) {
   ==========================================================================
   */
   app.get('/home', function(req, res, next) {
-    res.render('User/index', { title: 'crow' });
+
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("filler");
+      dbo.collection("companies").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        dbo.collection("catalouges").find({}).toArray(function(err, results) {
+          if (err) throw err;
+          res.render('User/index', { title: 'crow', supplier : result, catalouge: results});
+          db.close();
+        });
+        db.close();
+      });
+    });
   });
 
   app.get('/admin', isLoggedIn, function(req, res, next) {
@@ -123,8 +136,6 @@ module.exports = function(app, passport) {
         db.close();
       });
     });
-
-
 
   })
 
@@ -148,7 +159,8 @@ module.exports = function(app, passport) {
       item.catalouge.colour = req.body.colour;
       item.catalouge.size = req.body.size;
       item.catalouge.productType = req.body.product_type;
-      item.catalouge.image = req.file.path;
+      item.catalouge.image = "/uploads/" + req.file.originalname;
+      item.catalouge.price = req.body.price;
 
       // save our user to the database
       item.save(function(err) {
@@ -168,7 +180,7 @@ module.exports = function(app, passport) {
               throw err;
       });
     }
-      res.redirect('/home');
+      res.redirect('/admin');
   });
 
 };

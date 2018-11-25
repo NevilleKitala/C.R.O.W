@@ -1,0 +1,26 @@
+<div class="card-deck featured">
+  <div class = "row">
+    <% for(var i = 0; i < catalouge.length; i++ ) { %>
+      <div class="card">
+        <img class="card-img-top" src="<%= catalouge[i].catalouge.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= catalouge[i].catalouge.name %></h5>
+          <h6 class="card-title"><%= catalouge[i].catalouge.price %></h6>
+          <h6 class="card-title light"><%= catalouge[i].catalouge.brand %></h6>
+        </div>
+      </div>
+    <% } %>
+  </div>
+  <div class = "row">
+    <% for(var i = 0; i < catalouge.length; i++ ) { %>
+      <div class="card">
+        <img class="card-img-top" src="<%= catalouge[i].catalouge.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= catalouge[i].catalouge.name %></h5>
+          <h6 class="card-title"><%= catalouge[i].catalouge.price %></h6>
+          <h6 class="card-title light"><%= catalouge[i].catalouge.brand %></h6>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>

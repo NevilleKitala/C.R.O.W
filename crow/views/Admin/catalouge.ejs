@@ -8,6 +8,7 @@
       <th scope="col">Colour</th>
       <th scope="col">Size</th>
       <th scope="col">Shoe</th>
+      <th scope="col">price</th>
       <th scope="col">image</th>
       <th scope="col"> - </th>
     </tr>
@@ -22,6 +23,7 @@
       <td><%= catalouge[i].catalouge.colour %></td>
       <td><%= catalouge[i].catalouge.size %></td>
       <td><%= catalouge[i].catalouge.productType %></td>
+      <td><%= catalouge[i].catalouge.price %></td>
       <td><%= catalouge[i].catalouge.image %></td>
     </tr>
   <% } %>
@@ -36,8 +38,8 @@
 
           <td>
             <select class="form-control" placeholder="brand name" name="brand_name">
-              <% for(var i = 0; i < catalouge.length; i++) { %>
-                <option value="<%= catalouge[i].catalouge.brand %>"><%= catalouge[i].catalouge.brand %></option>
+              <% for(var i = 0; i < supplier.length; i++) { %>
+                <option value="<%= supplier[i].company.brand %>"><%= supplier[i].company.brand %></option>
               <% } %>
             </select>
           </td>
@@ -75,6 +77,10 @@
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
+              <option value="8">9</option>
+              <option value="8">10</option>
+              <option value="8">11</option>
+              <option value="8">12</option>
             </select>
           </td>
 
@@ -91,11 +97,15 @@
           </td>
 
           <td>
+            <input class="form-control" placeholder="price"  type="number" name = "price">
+          </td>
+
+          <td>
             <input class="form-control" placeholder="image location"  type="file" name = "file">
           </td>
 
         </div>
-        <td>        
+        <td>
           <button class="btn btn-lg btn-primary btn-block submit-login" type="submit">Add catalouge</button>
         </td>
       </form>
